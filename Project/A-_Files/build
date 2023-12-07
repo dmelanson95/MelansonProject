@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo Building publish
+g++ temp_publish.cpp -o publish AnalogIn.cpp AnalogIn.h -lpaho-mqtt3c -pthread
+echo Building subscribe
+g++ subscribe.cpp -o subscribe -lpaho-mqtt3c -pthread
+echo Building LED_subscribe
+g++ LED_subscribe.cpp -o LED_subscribe LED.cpp LED.h GPIO.cpp GPIO.h -lpaho-mqtt3c -pthread
+echo Building push_button_publish
+g++ PushButtonPublish.cpp -o push_button_publish GPIO.cpp GPIO.h -lpaho-mqtt3c -pthread
+echo Complete

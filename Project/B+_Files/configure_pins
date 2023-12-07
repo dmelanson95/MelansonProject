@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+echo in > /sys/class/gpio/gpio46/direction
+config-pin P8.16 gpio_pu
+echo P8.16 configured
+
+echo out > /sys/class/gpio/gpio60/direction
+config-pin P9.12 gpio
+echo P9.12 configured

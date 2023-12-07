@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "starting to configure files for project 1"
+g++ readTemp.cpp AnalogIn.cpp -o readTemp_p -lpaho-mqtt3c
+config-pin p8.16 gpio_pu
+g++ pushbuttonStat.cpp GPIO.cpp -o pushbuttonStat_p -lpaho-mqtt3c
+config-pin p9.12 gpio
+g++ bbb2readTemp.cpp -o bbb2readTemp_s -lpaho-mqtt3c
+g++ bbb1pbLED.cpp GPIO.cpp -o bbb1pbLED_s -lpaho-mqtt3c
+echo "finished"

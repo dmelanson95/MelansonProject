@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+./configure_pins
+
+echo Building Temperature publish file
+g++ temp_publish.cpp -o temp_publish -lpaho-mqtt3c -pthread GPIO.cpp GPIO.h AnalogIn.cpp AnalogIn.h
+echo Complete
+chmod +x temp_publish
+
+echo Building Push Button publish file
+g++ PushButtonPublish.cpp -o pushButtonPublish GPIO.cpp GPIO.h -lpaho-mqtt3c -pthread
+echo Complete
+chmod +x pushButtonPublish
+
+echo Building Temperature subscribe file
+g++ temp_subscribe.cpp -o temp_subscribe LED.cpp LED.h -lpaho-mqtt3c -pthread
+echo Complete
+chmod +x temp_subscribe
+
+echo Building LED Subscribe file
+g++ LED_subscribe.cpp -o led_subscribe GPIO.cpp GPIO.h -lpaho-mqtt3c -pthread
+echo Complete
+chmod +x led_subscribe
+
+echo Building textBox_subscribe file
+g++ textBox_subscribe.cpp -o textBox_subscribe LED.cpp LED.h -lpaho-mqtt3c -pthread
+echo Complete
+chmod +x textBox_subscribe
